@@ -1,4 +1,4 @@
-## Green AI project Introduction
+## Green AI project Introduction :leaves:
 This repository stores code and project files related to the "Project Module" of THWS. The project name is "Green AI". Our group has tried to prune the YOLOv5 model and replace the backbone network to improve the reasoning efficiency of YOLOv5 and reduce the model size.
 
 The original YOLOv5 code:[YOLOv5](https://github.com/ultralytics/yolov5/)(V6)
@@ -24,4 +24,9 @@ GhostNet
 python train.py --imgsz 640 --epochs 100 --data ./data/all.yaml --cfg /content/models/hub/yolov5s-ghost.yaml  --cache --device 0 --name Ghostnet_backbone --optimizer AdamW
 ```
 
+### 2. Model Pruning
+Step1:Basic training
+```shell
+python train.py --imgsz 640 --epochs 100 --data ./data/all.yaml --cfg ./models/yolov5s.yaml --weights ./yolov5s.pt --cache --device 0 --name mydata_adam --optimizer AdamW
+```
 ## Authors：Bangguo Xu & Simei Yan & Liang Liu
