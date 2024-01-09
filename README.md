@@ -4,6 +4,6 @@ This repository stores code and project files related to the "Project Module" of
 The original YOLOv5 code:[YOLOv5](https://github.com/ultralytics/yolov5/)(V6)
 
 ### 1.Replacement of the YOLOv5 backbone network
-Replacing the backbone network in YOLOv5 involves substituting the default backbone with an alternative neural network architecture to potentially improve performance and efficiency.In our project, we tried to replace the backbone network with [MobileNetV2/V3],[GhostNet],[ShuffleNet] respectively.
+Replacing the backbone network in YOLOv5 involves substituting the default backbone with an alternative neural network architecture to potentially improve performance and efficiency.In our project, we tried to replace the backbone network with [MobileNetV2/V3](https://arxiv.org/abs/1704.04861),[GhostNet](https://arxiv.org/abs/1911.11907),[ShuffleNet](https://arxiv.org/abs/1707.01083) respectively.
 
 ## Authors：Bangguo Xu & Simei Yan & Liang Liu
