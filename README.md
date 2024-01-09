@@ -8,7 +8,6 @@ Replacing the backbone network in YOLOv5 involves substituting the default backb
 
 1. Replacement of backbone network with Mobilenet
         ```shell
-        # Mobilenetv2
-        python train.py --imgsz 640 --epochs 100 --data ./data/all.yaml --cfg /content/models/MobileNetv2.yaml  --cache --device 0 --name backbone_MobileNetv2 --optimizer AdamW
+        python train.py --data coco.yaml --cfg yolov5s.yaml --weights '' --batch-size 32 --device 0 --epochs 300 --name coco --optimizer AdamW --data data/coco.yaml
         ```
 ## Authors：Bangguo Xu & Simei Yan & Liang Liu
