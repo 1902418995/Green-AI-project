@@ -8,7 +8,29 @@ Replacing the backbone network in YOLOv5 involves substituting the default backb
 
 1. Replacement of backbone network with Mobilenet
 
-        ```python
-   python train.py --data coco.yaml --cfg yolov5s.yaml --weights '' --batch-size 32 --device 0 --epochs 300 --name coco --optimizer AdamW --data data/coco.yaml
+
+```python
+            # Backward
+            loss.backward()
+            # scaler.scale(loss).backward()
+            # # ============================= sparsity training ========================== #
+            srtmp = opt.sr*(1 - 0.9*epoch/epochs)
+            if opt.st:
+                ignore_bn_list = []
+                for k, m in model.named_modules():
+                    if isinstance(m, Bottleneck):
+                        if m.add:
+                            ignore_bn_list.append(k.rsplit(".", 2)[0] + ".cv1.bn")
+                            ignore_bn_list.append(k + '.cv1.bn')
+                            ignore_bn_list.append(k + '.cv2.bn')
+                    if isinstance(m, nn.BatchNorm2d) and (k not in ignore_bn_list):
+                        m.weight.grad.data.add_(srtmp * torch.sign(m.weight.data))  # L1
+                        m.bias.grad.data.add_(opt.sr*10 * torch.sign(m.bias.data))  # L1
+            # # ============================= sparsity training ========================== #
+
+            optimizer.step()
+                # scaler.step(optimizer)  # optimizer.step
+                # scaler.update()
+            optimizer.zero_grad()
 ```
 ## Authors：Bangguo Xu & Simei Yan & Liang Liu
