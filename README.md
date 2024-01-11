@@ -3,6 +3,8 @@ This repository stores code and project files related to the "Project Module" of
 
 The original YOLOv5 code:[YOLOv5](https://github.com/ultralytics/yolov5/)(V6)
 
+The dataset used for model training is the campus landscape image dataset provided by THWS. We selected 565 images from it as the training data for YOLOv5 transfer learning, which contains a total of 14 categories. The specific categories are: ['chair', 'person', 'tree', 'robot', 'door', 'fire extinguisher', 'screen', 'clock', 'podium', 'projector', 'backpack', 'laptop', ' bottle', 'window']
+
 ### 1.Replacement of the YOLOv5 backbone network
 Replacing the backbone network in YOLOv5 involves substituting the default backbone with an alternative neural network architecture to potentially improve performance and efficiency.In our project, we tried to replace the backbone network with [MobileNetV2/V3](https://arxiv.org/abs/1704.04861),[GhostNet](https://arxiv.org/abs/1911.11907),[ShuffleNet](https://arxiv.org/abs/1707.01083) respectively.
 
@@ -25,8 +27,35 @@ python train.py --imgsz 640 --epochs 100 --data ./data/all.yaml --cfg /content/m
 ```
 
 ### 2. Model Pruning
+Model pruning is a technique used in machine learning to reduce the size of a model without significantly impacting its accuracy or performance. This technique is particularly valuable in deploying models to environments with limited resources, such as mobile devices or embedded systems. The main steps involved in model pruning are as follows:
 Step1:Basic training
 ```shell
 python train.py --imgsz 640 --epochs 100 --data ./data/all.yaml --cfg ./models/yolov5s.yaml --weights ./yolov5s.pt --cache --device 0 --name mydata_adam --optimizer AdamW
 ```
+Step2:Sparcity training
+```shell
+!python train.py --imgsz 640 --epochs 50 --data ./data/all.yaml  --weights ./yolov5s.pt --cache --device 0 --name sparcity_training_0.0001 --optimizer AdamW --bn_sparsity --sparsity_rate 0.0001
+```
+Step3:Pruning
+```shell
+!python prune.py --percent 0.3 --weights /content/runs/sparcity_training_0.0007/weights/best.pt --data data/all.yaml --cfg models/yolov5s.yaml --imgsz 640 --name prune_sp=0.0007_pc=0.3
+```
+Step4:Fine-tuning
+```shell
+!python train.py --img 640 --batch 32 --epochs 100 --weights /content/runs/val/prune_sp=0.0007_pc=0.3/pruned_model.pt --cache --data /content/data/all.yaml --cfg models/yolov5s.yaml --name prune_sp=0.0007_pc=0.3_ft --device 0 --optimizer AdamW --ft_pruned_model --hyp hyp.finetune_prune.yaml
+```
+### Experiments
+- Result of THWS Dataset
+  1.Basic Training
+  | exp\_name        | model   | optim&epoch | Precision | mAP@.5  | note                |
+    | ---------------- | ------- | ----------- | ------- | ------- | ------------------- | 
+    | basic_Adam             | yolov5s | adam 100   | 0.796| 0.729| \- |    
+    | basic_AdamW            | yolov5s | adamw 100   | 0.764| 0.750| \-| 
+    | basic_SGD   | yolov5s | adamw 100    | 0.822 | 0.774| \- |
+
+## References
+[Learning Efficient Convolutional Networks Through Network Slimming](https://arxiv.org/abs/1708.06519)
+[Pruning Filters for Efficient ConvNets](https://arxiv.org/abs/1608.08710)
+
+
 ## Authors：Bangguo Xu & Simei Yan & Liang Liu
