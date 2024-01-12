@@ -79,21 +79,22 @@ Step4:Fine-tuning
 
   #### 4.Fine-Tuning
 
-| exp_name | Precision | Recall | mAP50 | sparcity_ratio | prune_ratio | threshold | parameters    | model_size | training_time&epochs | GFLOPs |
-|----------|-----------|--------|-------|----------------|-------------|-----------|---------------|------------|----------------------|--------|
-| prune_1  | 0.455     | 0.229  | 0.304 | 0.0001         | 0.3         | 0.687     | 4,116,730  | 8.111MB    | \                    | 12.2   |
-| prune_2  | 0.128     | 0.0134 | 0.071 | 0.0001         | 0.4         | 0.687     | 3,363,378  | 6.67MB     | \                    | 10.8   |
-| prune_3  | 0.835     | 0.663  | 0.736 | 0.0005         | 0.3         | 0.754     | 4,417,598  | 8.687MB    | \                    | 13.2   |
-| prune_4  | 0.578     | 0.439  | 0.44  | 0.0005         | 0.5         | 0.754     | 2,715,164  | 5.429MB    | \                    | 11.2   |
-| prune_5  | 0.735     | 0.596  | 0.654 | 0.0007         | 0.3         | 0.389     | 3,799,301  | 7.505MB    | \                    | 12.9   |
-| prune_6  | 0.717     | 0.623  | 0.658 | 0.01           | 0.25        | 0.263     | 5,114,195  | 10.014MB   | \                    | 13.2   |
+| exp_name   | Precision | Recall | mAP50 | sparcity_ratio | prune_ratio | parameters    | model_size | training_time&epochs | GFLOPs |
+|------------|-----------|--------|-------|----------------|-------------|---------------|------------|----------------------|--------|
+| ft_prune_1 | 0.834     | 0.746  | 0.788 | 0.0001         | 0.3         | 4,116,730.00  | 8.302MB    | 0.315h/100           | 12.2   |
+| ft_prune_2 | 0.808     | 0.752  | 0.789 | 0.0001         | 0.4         | 3,363,378.00  | 6.862MB    | 0.330h/100           | 10.8   |
+| ft_prune_3 | 0.771     | 0.786  | 0.79  | 0.0005         | 0.3         | 4,417,598.00  | 8.876MB    | 0.314h/100           | 13.2   |
+| ft_prune_4 | 0.86      | 0.724  | 0.786 | 0.0005         | 0.5         | 2,715,164.00  | 5.621MB    | 0.312h/100           | 11.2   |
+| ft_prune_5 | 0.796     | 0.737  | 0.777 | 0.0007         | 0.3         | 3,799,301.00  | 7.696MB    | 0.309h/100           | 12.9   |
+| ft_prune_6 | 0.687     | 0.643  | 0.679 | 0.01           | 0.25        | 5,114,195.00  | 10.208MB   | 0.332h/100           | 13.2   |
+
 
 
 
 
 ## References
-[Learning Efficient Convolutional Networks Through Network Slimming](https://arxiv.org/abs/1708.06519)
-[Pruning Filters for Efficient ConvNets](https://arxiv.org/abs/1608.08710)
+- [Learning Efficient Convolutional Networks Through Network Slimming](https://arxiv.org/abs/1708.06519)
+- [Pruning Filters for Efficient ConvNets](https://arxiv.org/abs/1608.08710)
 
 
 ## Authors：Bangguo Xu & Simei Yan & Liang Liu
