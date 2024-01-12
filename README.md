@@ -70,8 +70,6 @@ Step4:Fine-tuning
 
 | exp_name | Precision | Recall | mAP50 | sparcity_ratio | prune_ratio | threshold | parameters    | model_size | training_time&epochs | GFLOPs |
 |----------|-----------|--------|-------|----------------|-------------|-----------|---------------|------------|----------------------|--------|
-
-
 | prune_1  | 0.455     | 0.229  | 0.304 | 0.0001         | 0.3         | 0.687     | 4,116,730  | 8.111MB    | \                    | 12.2   |
 | prune_2  | 0.128     | 0.0134 | 0.071 | 0.0001         | 0.4         | 0.687     | 3,363,378  | 6.67MB     | \                    | 10.8   |
 | prune_3  | 0.835     | 0.663  | 0.736 | 0.0005         | 0.3         | 0.754     | 4,417,598  | 8.687MB    | \                    | 13.2   |
@@ -83,8 +81,6 @@ Step4:Fine-tuning
 
 | exp_name | Precision | Recall | mAP50 | sparcity_ratio | prune_ratio | threshold | parameters    | model_size | training_time&epochs | GFLOPs |
 |----------|-----------|--------|-------|----------------|-------------|-----------|---------------|------------|----------------------|--------|
-
-
 | prune_1  | 0.455     | 0.229  | 0.304 | 0.0001         | 0.3         | 0.687     | 4,116,730  | 8.111MB    | \                    | 12.2   |
 | prune_2  | 0.128     | 0.0134 | 0.071 | 0.0001         | 0.4         | 0.687     | 3,363,378  | 6.67MB     | \                    | 10.8   |
 | prune_3  | 0.835     | 0.663  | 0.736 | 0.0005         | 0.3         | 0.754     | 4,417,598  | 8.687MB    | \                    | 13.2   |
@@ -94,14 +90,6 @@ Step4:Fine-tuning
 
 
 
-  
- 
-
-  
-  
-  
-
-  
 
 ## References
 [Learning Efficient Convolutional Networks Through Network Slimming](https://arxiv.org/abs/1708.06519)
