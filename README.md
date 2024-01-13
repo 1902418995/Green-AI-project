@@ -25,6 +25,15 @@ GhostNet
 ```shell
 python train.py --imgsz 640 --epochs 100 --data ./data/all.yaml --cfg /content/models/hub/yolov5s-ghost.yaml  --cache --device 0 --name Ghostnet_backbone --optimizer AdamW
 ```
+### Experiments
+- Result of THWS Dataset
+#### 1.Basic Training
+
+| exp_name             | Precision | Recall | mAP50 | parameters    | model_size | training_time&epochs | GFLOPs |   |   | note |
+|----------------------|-----------|--------|-------|---------------|------------|----------------------|--------|---|---|------|
+| basic_Adam  | 0.796     | 0.705  | 0.729 | 7,047,883.00  | 14.5MB     | 0.311h/100           | 15.9   |   |   |      |
+| basic_AdamW | 0.764     | 0.754  | 0.75  | 7,047,883.00  | 14.5MB     | 0.312h/100           | 15.9   |   |   |      |
+| basic_SGD   | 0.822     | 0.732  | 0.774 | 7,047,883.00  | 14.5MB     | 0.3h/100             | 15.9   |   |   |      |
 
 ### 2. Model Pruning
 Model pruning is a technique used in machine learning to reduce the size of a model without significantly impacting its accuracy or performance. This technique is particularly valuable in deploying models to environments with limited resources, such as mobile devices or embedded systems. The main steps involved in model pruning are as follows:
