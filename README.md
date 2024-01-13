@@ -25,8 +25,9 @@ GhostNet
 ```shell
 python train.py --imgsz 640 --epochs 100 --data ./data/all.yaml --cfg /content/models/hub/yolov5s-ghost.yaml  --cache --device 0 --name Ghostnet_backbone --optimizer AdamW
 ```
-### Experiments
+#### Experiments
 - Result of THWS Dataset
+
 | exp_name           | Precision | Recall | mAP50 | backbone          | parameters    | model_size | training_time&epochs | GFLOPs |
 |--------------------|-----------|--------|-------|-------------------|---------------|------------|----------------------|--------|
 | replace_backbone_1 | 0.776     | 0.61   | 0.661 | MobileNetv2       | 2,936,331.00  | 6.4MB      | 0.316h/100           | 7.1    |
@@ -55,9 +56,10 @@ Step4:Fine-tuning
 !python train.py --img 640 --batch 32 --epochs 100 --weights /content/runs/val/prune_sp=0.0007_pc=0.3/pruned_model.pt --cache --data /content/data/all.yaml --cfg models/yolov5s.yaml --name prune_sp=0.0007_pc=0.3_ft --device 0 --optimizer AdamW --ft_pruned_model --hyp hyp.finetune_prune.yaml
 ```
 
-### Experiments
-- Result of THWS Dataset
-  #### 1.Basic Training
+#### Experiments
+- Result of THWS Dataset\
+
+1.Basic Training
 
 | exp_name             | Precision | Recall | mAP50 | parameters    | model_size | training_time&epochs | GFLOPs |   |   | note |
 |----------------------|-----------|--------|-------|---------------|------------|----------------------|--------|---|---|------|
@@ -65,7 +67,7 @@ Step4:Fine-tuning
 | basic_AdamW | 0.764     | 0.754  | 0.75  | 7,047,883.00  | 14.5MB     | 0.312h/100           | 15.9   |   |   |      |
 | basic_SGD   | 0.822     | 0.732  | 0.774 | 7,047,883.00  | 14.5MB     | 0.3h/100             | 15.9   |   |   |      |
 
-  #### 2.Sparse Training
+2.Sparse Training
 
 | exp_name            | Precision | Recall | mAP50 | sparcity_ratio | parameters    | model_size | training_time&epochs | GFLOPs |
 |---------------------|-----------|--------|-------|----------------|---------------|------------|----------------------|--------|
@@ -76,7 +78,7 @@ Step4:Fine-tuning
 | sparcity_training_5 | 0.748     | 0.647  | 0.689 | 0.005          | 7,047,883.00  | 14.5MB     | 0.211h/50            | 15.9   |
 | sparcity_training_6 | 0.718     | 0.623  | 0.658 | 0.01           | 7,047,883.00  | 14.5MB     | 0.208h/50            | 15.9   |
 
-  #### 3.Pruning
+  ##### 3.Pruning
 
 | exp_name | Precision | Recall | mAP50 | sparcity_ratio | prune_ratio | threshold | parameters    | model_size | training_time&epochs | GFLOPs |
 |----------|-----------|--------|-------|----------------|-------------|-----------|---------------|------------|----------------------|--------|
@@ -87,7 +89,7 @@ Step4:Fine-tuning
 | prune_5  | 0.735     | 0.596  | 0.654 | 0.0007         | 0.3         | 0.389     | 3,799,301  | 7.505MB    | \                    | 12.9   |
 | prune_6  | 0.717     | 0.623  | 0.658 | 0.01           | 0.25        | 0.263     | 5,114,195  | 10.014MB   | \                    | 13.2   |
 
-  #### 4.Fine-Tuning
+  ##### 4.Fine-Tuning
 
 | exp_name   | Precision | Recall | mAP50 | sparcity_ratio | prune_ratio | parameters    | model_size | training_time&epochs | GFLOPs |
 |------------|-----------|--------|-------|----------------|-------------|---------------|------------|----------------------|--------|
