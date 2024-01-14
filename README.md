@@ -59,7 +59,7 @@ python train.py --img 640 --batch 32 --epochs 100 --weights /content/runs/val/pr
 #### Experiments
 - Result of THWS Dataset
 
-1.Basic Training
+1.Normal Training
 
 | exp_name             | Precision | Recall | mAP50 | parameters    | model_size | training_time&epochs | GFLOPs |   |   | note |
 |----------------------|-----------|--------|-------|---------------|------------|----------------------|--------|---|---|------|
