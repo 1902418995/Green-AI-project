@@ -1,0 +1,1 @@
+!python train.py --data all.yaml --cfg yolov5s.yaml --weights weights/yolov5s.pt --batch-size 32 --device 0 --epochs 50 --name mydata --optimizer AdamW

@@ -1,0 +1,9 @@
+#train: /home/vipuser/Downloads/yolov5-6.0/data/train/train.txt
+#val: /home/vipuser/Downloads/yolov5-6.0/data/val/val.txt
+train: /content/data/yolov5-6.0/data/train/train.txt
+val: /content/data/yolov5-6.0/data/val/val.txt
+test:  # test images (optional)
+
+# Classes
+nc: 4  # number of classes
+names: ['recyclable waste', 'hazardous waste', 'kitchen waste', 'other waste']  # class names
